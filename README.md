@@ -1,6 +1,6 @@
 # The blog application I'm still working on
 
-### Frontend
+### FRONTEND
 -HTML
 -CSS
 -VanillaJS
