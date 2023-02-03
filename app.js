@@ -1,48 +1,33 @@
+const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
-
 const app = express();
 const port = 3000;
 const hostname = "127.0.0.1";
 
-// Connect to the database and handle any errors that may occur during the connection process 
-mongoose.set("strictQuery", true);
-mongoose.connect(
-  "mongodb://127.0.0.1/nodeblogdb",
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    if (!err) {
-      console.log("DB connection succeeded");
-    } else {
-      console.log("Error in DB connection: " + err);
-    }
-  }
-);
+// This middleware is required to display static files
+app.use(express.static("public"));
 
-// Set up the file upload middleware
-app.use(fileUpload());
-
-// Set up the view engine and the static files directory
-app.use(express.static("public")); 
+// This middleware is required to display handlebars files
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
-// Set up the body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.get("/", (req, res) => {
+  res.render("site/index");
+});
 
-// Set up the routes for the application 
-const main = require("./routes/main");
-const posts = require("./routes/posts");
+app.get("/about", (req, res) => {
+  res.render("site/about");
+});
 
-// Use the routes for the application 
-app.use("/", main);
-app.use("/posts", posts); 
+app.get("/blog", (req, res) => {
+  res.render("site/blog");
+});
 
-// Start the server and listen for requests 
+app.get("/contact", (req, res) => {
+  res.render("site/contact");
+});
+
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Example app listening at http://${hostname}:${port}`);
 });
