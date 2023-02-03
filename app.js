@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
@@ -26,9 +27,15 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // Routes middleware
 const main = require("./routes/main");
+const posts = require("./routes/posts");
 app.use("/", main);
+app.use("/posts", posts);
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening at http://${hostname}:${port}`);
