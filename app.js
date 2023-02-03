@@ -1,9 +1,24 @@
 const path = require("path");
+const mongoose = require("mongoose");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
 const port = 3000;
 const hostname = "127.0.0.1";
+
+// Connect to database
+mongoose.set("strictQuery", true);
+mongoose
+  .connect(`mongodb://${hostname}/testdb`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database connected successfully");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // This middleware is required to display static files
 app.use(express.static("public"));
