@@ -15,10 +15,12 @@ mongoose
     console.log(err);
   });
 
-// Create a new post
+/*
+---CREATE A NEW POST---
+
 Post.create({
-  title: "My first post",
-  content: "This is my first post",
+  title: "My third post",
+  content: "This is my third post",
 })
   .then((post) => {
     console.log(post);
@@ -26,3 +28,69 @@ Post.create({
   .catch((err) => {
     console.log(err);
   });
+*/
+
+/*
+---FIND SPECIFIC POST---
+
+Post.find({
+  title: "My first post",
+})
+  .then((post) => {
+    console.log(post);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+*/
+
+/*
+---FIND ALL POSTS---
+
+Post.find({ })
+  .then((post) => {
+    console.log(post);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+*/
+
+/* 
+---FIND POST BY ID---
+
+Post.findById("63dcf649ce4540af0180334d")
+  .then((post) => {
+    console.log(post);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+ */
+
+/* 
+---UPDATE POST BY ID---
+
+Post.findByIdAndUpdate("63dcf649ce4540af0180334d", {
+  title: "My first post UPDATED",
+  content: "This is my first post UPDATED",
+})
+  .then((post) => {
+    console.log(post);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+ */
+
+/*
+---DELETE POST BY ID---
+
+Post.findByIdAndDelete("63dcf649ce4540af0180334d")
+  .then((post) => {
+    console.log(post);
+  })
+  .catch((err) => {
+    console.log(err);
+  }); 
+  */
