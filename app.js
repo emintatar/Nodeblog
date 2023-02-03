@@ -28,6 +28,14 @@ app.get("/contact", (req, res) => {
   res.render("site/contact");
 });
 
+app.get("/login", (req, res) => {
+  res.render("site/login");
+});
+
+app.get("/register", (req, res) => {
+  res.render("site/register");
+});
+
 app.listen(port, hostname, () => {
   console.log(`Example app listening at http://${hostname}:${port}`);
 });
