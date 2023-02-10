@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
@@ -19,6 +20,9 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+// File upload middleware
+app.use(fileUpload());
 
 // Static files middleware
 app.use(express.static("public"));
