@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const express = require("express");
 const exphbs = require("express-handlebars");
+const generateDate = require("./helpers/generateDate").generateDate;
 const app = express();
 const port = 3000;
 const hostname = "127.0.0.1";
@@ -28,7 +29,14 @@ app.use(fileUpload());
 app.use(express.static("public"));
 
 // Handlebar files middleware
-app.engine("handlebars", exphbs.engine());
+app.engine(
+  "handlebars",
+  exphbs.engine({
+    helpers: {
+      generateDate: generateDate,
+    },
+  })
+);
 app.set("view engine", "handlebars");
 
 // Body parser middleware
