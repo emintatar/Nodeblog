@@ -4,6 +4,8 @@ const fileUpload = require("express-fileupload");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const generateDate = require("./helpers/generateDate").generateDate;
+const expressSession = require("express-session");
+const mongoStore = require("connect-mongo");
 const app = express();
 const port = 3000;
 const hostname = "127.0.0.1";
@@ -21,6 +23,16 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+// Express session middleware
+app.use(
+  expressSession({
+    secret: "test",
+    resave: false,
+    saveUninitialized: true,
+    store: mongoStore.create({ mongoUrl: `mongodb://${hostname}/testdb` }),
+  })
+);
 
 // File upload middleware
 app.use(fileUpload());
