@@ -25,12 +25,4 @@ router.get("/contact", (req, res) => {
   res.render("site/contact");
 });
 
-router.get("/login", (req, res) => {
-  res.render("site/login");
-});
-
-router.get("/register", (req, res) => {
-  res.render("site/register");
-});
-
 module.exports = router;
