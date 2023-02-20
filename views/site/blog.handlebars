@@ -10,6 +10,15 @@
 ============================-->
 <section id="blog" class="md-padding">
   <div class="container">
+
+    {{#if sessionFlash.message}}
+
+      <div class="{{sessionFlash.type}}">
+        {{sessionFlash.message}}
+      </div>
+
+    {{/if}}
+
     <div class="row">
       <main id="main" class="col-md-8">
         <div class="row">

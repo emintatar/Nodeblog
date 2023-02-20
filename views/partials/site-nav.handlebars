@@ -3,7 +3,7 @@
   id="mainNav"
 >
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="/">LOGO</a>
+    <a class="navbar-brand js-scroll-trigger" href="/">Nodeblog</a>
     <button
       class="navbar-toggler navbar-toggler-right"
       type="button"
@@ -22,23 +22,39 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
+          <a class="nav-link" href="/admin">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/blog">Blog</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/posts/new">Add Post</a>
-        </li>
+
+        {{#if displayLinks}}
+          <li class="nav-item">
+            <a class="nav-link" href="/posts/new">Add Post</a>
+          </li>
+        {{/if}}
+
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/login">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users/register">Register</a>
-        </li>
+
+        {{#unless displayLinks}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login">Log In</a>
+          </li>
+        {{/unless}}
+
+        {{#unless displayLinks}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/register">Register</a>
+          </li>
+        {{/unless}}
+
+        {{#if displayLinks}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/logout">Log Out</a>
+          </li>
+        {{/if}}
       </ul>
     </div>
   </div>
