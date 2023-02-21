@@ -5,6 +5,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   content: {
     type: String,
     required: true,
@@ -16,6 +20,12 @@ const PostSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    type: String,
+    required: true,
   },
 });
 
