@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
   },
   content: {
     type: String,
@@ -23,7 +23,7 @@ const PostSchema = new mongoose.Schema({
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
+    ref: "categories",
     type: String,
     required: true,
   },

@@ -14,7 +14,7 @@ const hostname = "127.0.0.1";
 // Connect to database
 mongoose.set("strictQuery", true);
 mongoose
-  .connect(`mongodb://${hostname}/testdb`, {
+  .connect(`mongodb://${hostname}/nodeblogdb`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
